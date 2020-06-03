@@ -1,0 +1,50 @@
+Method 1:
+class Solution {
+    public ListNode deleteDuplicate (ListNode head) {
+        ListNode current_node=head;
+        while(current_node != null && current_node.next !=null)
+        {
+            if(current_node.val == current_node.next.val)
+            {    
+                current_node.next = current_node.next.next;
+            } 
+            else{
+                current_node=current_node.next;
+            }
+        }
+        return head;
+    }
+}
+
+method 2:
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        if(nums.length == 0) return 0;
+        int dup = nums[0];
+        int end = 1;
+        for(int i = 1; i < nums.length; i++){
+            if(nums[i]!=dup){
+                nums[end] = nums[i];
+                dup = nums[i];
+                end++;
+            }
+        }
+        return end;
+    }
+}
+
+method 3:
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        
+        int index= 1;
+        for(int i = 0 ; i<nums.length ; i++){
+            if(nums[i] != nums[i+1]){
+            nums[index++]=nums[i+1];
+                }
+        }
+        return index;
+        
+        
+    }
+}
